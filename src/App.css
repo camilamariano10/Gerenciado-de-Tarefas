@@ -1,38 +1,504 @@
-.App {
-  text-align: center;
+/* Estilos Globais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3 {
+  margin: 0;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Estilo Global de Botões */
+button {
+  font-family: inherit;
+  background-color: #224123; /* Ajustado para evitar verde */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:hover {
+  background-color: #1a331b; /* Cor mais escura no hover */
+}
+
+/* Layout Principal */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  width: 1200px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Barra Lateral */
+.sidebar {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  width: 250px;
+}
+
+.sidebar h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.sidebar div {
+  margin-bottom: 15px;
+}
+
+.sidebar span {
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #555;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sidebar span:hover {
+  background-color: #d6d6d6;
+}
+
+/* Lista de Tarefas */
+.task-list {
+  flex: 2;
+  padding: 20px;
+}
+
+.task-list h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espaça o conteúdo para extremos */
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  position: relative; /* Para posicionar o botão de edição */
+}
+
+.task input[type="checkbox"] {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Ajustes para Títulos das Tarefas */
+.task span {
+  font-size: 16px;
+  color: #333; /* Cor ajustada para maior contraste */
+  flex: 1; /* Permite que o título ocupe o espaço restante */
+  margin-left: 10px; /* Espaçamento entre o checkbox e o texto */
+  overflow: hidden; /* Evita que o texto exceda o contêiner */
+  white-space: nowrap; /* Mantém o texto em uma linha */
+  text-overflow: ellipsis; /* Adiciona "..." para textos longos */
+}
+
+/* Botão de Edição Alinhado */
+.edit-task-button {
+  margin-left: auto; /* Empurra o botão para o extremo direito */
+  background-color: #ffc107;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.edit-task-button:hover {
+  background-color: #e0a800;
+}
+
+/* Cabeçalho da Lista de Tarefas */
+.task-list-header {
+  display: flex; /* Habilita o layout flexível */
+  justify-content: space-between; /* Espaço entre o título e o botão */
+  align-items: center; /* Alinha verticalmente os itens */
+  margin-bottom: 15px; /* Espaçamento abaixo do cabeçalho */
+}
+
+/* Botão Adicionar */
+.add-task-button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.add-task-button:hover {
+  background-color: #45a049;
+}
+
+/* Botão de Fechar (X) no canto superior direito */
+.close-button {
+  position: absolute; /* Posição relativa ao pop-up */
+  top: 10px; /* Distância do topo */
+  right: 10px; /* Distância da direita */
+  background: none; /* Remove fundo */
+  border: none; /* Remove borda */
+  color: black; /* Cor preta do "X" */
+  font-size: 18px; /* Tamanho ajustado */
+  font-weight: bold; /* Negrito */
+  cursor: pointer; /* Cursor de mão ao passar */
+  padding: 0; /* Remove o preenchimento global do botão */
+  transition: transform 0.2s ease, color 0.2s ease; /* Adiciona transição */
+}
+
+.close-button:hover {
+  transform: scale(1.2); /* Amplia levemente ao passar o mouse */
+  color: #555; /* Muda para cinza claro no hover */
+}
+
+/* Ajuste do Contêiner do Pop-Up */
+.popup-content {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 auto; /* Centraliza o pop-up */
+}
+
+/* Contêiner do Pop-Up */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão de Fechar */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.close-button:hover {
+  transform: scale(1.2);
+  color: #555;
+}
+
+/* Campo de entrada para o título da tarefa */
+.task-form-title-input {
+  width: 90%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.task-form-title-input::placeholder {
+  color: #bbb;
+  font-size: 13px;
+}
+
+
+/* Área de Texto */
+.task-form-textarea {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #555;
+  resize: none;
+  height: 60px;
+}
+
+/* Etiquetas */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tag {
+  background-color: #f4f4f4;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tag:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+/* Rótulos */
+.task-form-label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Opções de Prioridade */
+.priority-options label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Botão Salvar */
+.save-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #1a242f;
+}
+.edit-task-button {
+  margin-left: 10px;
+  background-color: #ffc107;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.edit-task-button:hover {
+  background-color: #e0a800;
+}
+/* Botões na janela de pop-up */
+.task-form-buttons {
+  display: flex; /* Permite alinhar os botões lado a lado */
+  justify-content: space-between; /* Espaço igual entre os botões */
+  gap: 10px; /* Espaçamento entre os botões */
+  margin-top: 15px; /* Espaçamento acima dos botões */
+}
+
+/* Botão Salvar */
+.save-button {
+  flex: 1; /* Garante que ambos os botões tenham o mesmo tamanho */
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
+
+/* Botão Excluir */
+.delete-button {
+  flex: 1; /* Garante que ambos os botões tenham o mesmo tamanho */
+  padding: 10px;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c62828;
+}
+.clear-filter-button {
+  background-color: #f44336; /* Cor vermelha */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-filter-button:hover {
+  background-color: #d32f2f; /* Vermelho mais escuro no hover */
+}
+/* Etiquetas */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tag {
+  background-color: #f4f4f4;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.tag:hover {
+  background-color: #ddd;
+}
+
+.tag.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+.tag.selected {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #0056b3;
+}
+.priority-filter {
+  display: inline-block;
+  background-color: #f4f4f4;
+  color: #555;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.priority-filter:hover {
+  background-color: #ddd;
+}
+.status-filter {
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.status-filter:hover {
+  background-color: #ddd; /* Cor de destaque ao passar o mouse */
+}
+
+.task.completed-task span {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.task-divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+/* Progresso */
+.progress-bar-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  border-left: 1px solid #ddd;
+}
+/* Barra de Progresso */
+.progress-bar-header {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-.App-link {
-  color: #61dafb;
+.progress-bar-circle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.progress-bar-percentage {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
+
+

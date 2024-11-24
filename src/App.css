@@ -149,9 +149,9 @@ button:hover {
   height: 50px;
   border: none;
   border-radius: 50%;
-  background-color: #4CAF50;
+  background-color: #507772;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,7 +161,7 @@ button:hover {
 }
 
 .add-task-button:hover {
-  background-color: #45a049;
+  background-color: #67A07D;
 }
 
 /* Botão de Fechar (X) no canto superior direito */
@@ -225,7 +225,7 @@ button:hover {
   right: 10px;
   background: none;
   border: none;
-  color: #333;
+  color: #507772;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
@@ -326,7 +326,7 @@ button:hover {
 }
 .edit-task-button {
   margin-left: 10px;
-  background-color: #ffc107;
+  background-color: #93BFA8;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
@@ -336,7 +336,7 @@ button:hover {
 }
 
 .edit-task-button:hover {
-  background-color: #e0a800;
+  background-color: #67A07D;
 }
 /* Botões na janela de pop-up */
 .task-form-buttons {
@@ -350,7 +350,7 @@ button:hover {
 .save-button {
   flex: 1; /* Garante que ambos os botões tenham o mesmo tamanho */
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #9CB5D4;
   color: white;
   border: none;
   border-radius: 5px;
@@ -361,14 +361,14 @@ button:hover {
 }
 
 .save-button:hover {
-  background-color: #45a049;
+  background-color: #779fcf;
 }
 
 /* Botão Excluir */
 .delete-button {
   flex: 1; /* Garante que ambos os botões tenham o mesmo tamanho */
   padding: 10px;
-  background-color: #e53935;
+  background-color: #b4413f;
   color: white;
   border: none;
   border-radius: 5px;
@@ -379,10 +379,10 @@ button:hover {
 }
 
 .delete-button:hover {
-  background-color: #c62828;
+  background-color: #c62828a8;
 }
 .clear-filter-button {
-  background-color: #f44336; /* Cor vermelha */
+  background-color: #d36861; /* Cor vermelha */
   color: white;
   border: none;
   border-radius: 5px;
@@ -422,9 +422,9 @@ button:hover {
   color: white;
 }
 .tag.selected {
-  background-color: #007bff;
-  color: white;
-  border: 1px solid #0056b3;
+  background-color: #F9EEDC;
+  color: rgb(138, 138, 138);
+  border: 1px solid #F9EEDC;
 }
 .priority-filter {
   display: inline-block;

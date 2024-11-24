@@ -11,7 +11,7 @@ function ProgressBar({ tasks }) {
       <div
         className="progress-bar-circle"
         style={{
-          background: `conic-gradient(#4CAF50 ${percentage}%, #ddd ${percentage}% 100%)`,
+          background: `conic-gradient(#9CB5D4 ${percentage}%, #ddd ${percentage}% 100%)`,
         }}
       >
         <span className="progress-bar-percentage">{percentage}%</span>

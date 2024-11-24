@@ -11,6 +11,14 @@ function ProgressBar({ tasks }) {
       <div
         className="progress-bar-circle"
         style={{
+        background: `conic-gradient(#507772 ${percentage}%, #ddd ${percentage}% 100%)`,
+        position: 'relative',
+        width: '100px', // Tamanho do círculo
+        height: '100px', // Tamanho do círculo
+        borderRadius: '50%', // Deixa o elemento circular
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         }}
       >
         <span

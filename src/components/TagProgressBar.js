@@ -105,9 +105,9 @@ function TagProgressBar({ tasks }) {
 // Função para obter uma cor para cada etiqueta
 function getColorForTag(tag) {
   const colors = {
-    TRABALHO: '#4CAF50',
-    ESTUDO: '#2196F3',
-    FAMÍLIA: '#D2B48C',
+    TRABALHO: '#67A07D',
+    ESTUDO: '#9CB5D4',
+    FAMÍLIA: '#F9EEDC',
   };
   return colors[tag] || '#ddd'; // Cor padrão caso a etiqueta não esteja mapeada
 }

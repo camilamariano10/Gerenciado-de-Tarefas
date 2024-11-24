@@ -129,6 +129,7 @@ function TaskForm({ onClose, onSaveTask, onDeleteTask, taskToEdit }) {
                     <button className="delete-button" onClick={handleDelete} >
                     EXCLUIR
                 </button>
+                )}
                 <button className="save-button" onClick={handleSave}>
                     SALVAR
                 </button>

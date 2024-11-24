@@ -4,7 +4,7 @@ function Sidebar({ tags, priorities, onFilterChange, onClearFilter }) {
     return (
         <div className="sidebar">
             {/* Filtro por Etiquetas */}
-            <h3>Etiquetas</h3>
+            <h3>Categoria</h3>
             {tags.map((tag) => (
                 <span
                     key={tag}

@@ -3,13 +3,13 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #f5f5f5;
   color: #333;
 }
 
 h1, h2, h3 {
-  margin: 0;
-  color: #333;
+  margin: 20;
+  color: #2c3e50; /* Titulo Gerenciador de Tarefas*/
 }
 
 /* Estilo Global de Botões */
@@ -33,13 +33,13 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 50px;
 }
 
 .main {
   display: flex;
   width: 1200px;
-  background-color: white;
+  background-color: #C6E0DB;/* cor do quadro do meio - lado direito */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -47,29 +47,29 @@ button:hover {
 
 /* Barra Lateral */
 .sidebar {
-  background-color: #f4f4f4;
+  background-color: #70b4ad; /* cor do quadro do meio - lado esquerdo */
   padding: 20px;
-  border-right: 1px solid #ddd;
+  border-right: 2px solid #615e5e; /* Barra Lateral -linha divisoria */
   width: 250px;
 }
 
 .sidebar h3 {
   font-size: 16px;
   margin-bottom: 10px;
-  color: #555;
+  color: #000000d6; /* cor dos titulos da barra lateral esquerda */
 }
 
 .sidebar div {
-  margin-bottom: 15px;
+  margin-bottom: 40px; /* aumentar tamanho da caixa*/
 }
 
-.sidebar span {
+.sidebar span { /* botoes da lateral esquerda*/
   display: inline-block;
-  background-color: #e0e0e0;
+  background-color: #f8f8f8;
   color: #555;
   padding: 5px 10px;
-  margin: 5px 0;
-  border-radius: 5px;
+  margin: 5px;
+  border-radius: 5px; 
   font-size: 14px;
   cursor: pointer;
 }
@@ -87,7 +87,7 @@ button:hover {
 .task-list h2 {
   font-size: 18px;
   margin-bottom: 20px;
-  color: #333;
+  color: #060606d8;
 }
 
 .task {
@@ -149,19 +149,19 @@ button:hover {
   height: 50px;
   border: none;
   border-radius: 50%;
-  background-color: #4CAF50;
+  background-color: #507773;
   color: white;
   font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px #1a242f;
   transition: background-color 0.3s ease;
 }
 
 .add-task-button:hover {
-  background-color: #45a049;
+  background-color: #1a242f;
 }
 
 /* Botão de Fechar (X) no canto superior direito */
@@ -211,7 +211,7 @@ button:hover {
 
 .popup-content {
   position: relative;
-  background-color: #fff;
+  background-color: #b2cecb;
   padding: 20px;
   border-radius: 10px;
   width: 400px;
@@ -263,7 +263,7 @@ button:hover {
   border-radius: 5px;
   font-size: 14px;
   margin-bottom: 15px;
-  color: #555;
+  color: #080808;
   resize: none;
   height: 60px;
 }
@@ -301,7 +301,7 @@ button:hover {
 
 /* Opções de Prioridade */
 .priority-options label {
-  display: block;
+  display: inline-block;
   margin-bottom: 10px;
   font-size: 14px;
   color: #555;
@@ -350,7 +350,7 @@ button:hover {
 .save-button {
   flex: 1; /* Garante que ambos os botões tenham o mesmo tamanho */
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #507773;
   color: white;
   border: none;
   border-radius: 5px;
@@ -361,7 +361,7 @@ button:hover {
 }
 
 .save-button:hover {
-  background-color: #45a049;
+  background-color: #476260;
 }
 
 /* Botão Excluir */
@@ -387,9 +387,11 @@ button:hover {
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 520px;    /* Distância de 20px do topo */
+  right: 1180px;  /* Distância de 20px da direita */
 }
 
 .clear-filter-button:hover {
@@ -404,17 +406,17 @@ button:hover {
 }
 
 .tag {
-  background-color: #f4f4f4;
+  background-color: #f4f4f4; /* etiquetas apos clicar no adicionar */
   padding: 5px 10px;
   border-radius: 15px;
   font-size: 14px;
-  color: #555;
+  color: #222121;
   cursor: pointer;
   margin: 5px;
 }
 
 .tag:hover {
-  background-color: #ddd;
+  background-color: #507773;
 }
 
 .tag.selected {
@@ -422,9 +424,9 @@ button:hover {
   color: white;
 }
 .tag.selected {
-  background-color: #007bff;
+  background-color: #507773;
   color: white;
-  border: 1px solid #0056b3;
+  border: 1px solid #507773;
 }
 .priority-filter {
   display: inline-block;
@@ -465,7 +467,7 @@ button:hover {
     background: #ddd;
     margin: 20px 0;
 }
-/* Progresso */
+/* Progresso / Tarefas concluidas */
 .progress-bar-container {
   flex: 1;
   display: flex;
@@ -473,14 +475,16 @@ button:hover {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  border-left: 1px solid #ddd;
+  border-left: 2px solid #615e5e;/* divisória */
 }
-/* Barra de Progresso */
+/* Estilo para o título "Tarefas Concluídas" */
 .progress-bar-header {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 23px;  /* Ajuste no tamanho da fonte */
+  color: #333;  /* Cor do texto */
+  margin-bottom: 20px;  /* Espaçamento inferior */
+  text-align: center;  /* Alinhamento do título */
 }
+
 
 .progress-bar-circle {
   position: relative;
@@ -490,7 +494,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(25, 3, 3, 0.2);
   margin: 20px auto;
 }
 
@@ -500,5 +504,78 @@ button:hover {
   font-weight: bold;
   color: #333;
 }
+
+/* Estilos para a 2° barra de progresso */
+
+/* Estilo do título "Progresso por Etiquetas" */
+.progress-bar-container h2 {
+  font-size: 20px;  /* Ajuste o tamanho da fonte */
+  color: #333;      /* Cor do texto */
+  margin-bottom: 20px;  /* Espaçamento abaixo do título */
+}
+
+/* Barra de progresso geral */
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Container para as barras de progresso individuais */
+.tag-progress-bars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Cada item de barra de progresso */
+.progress-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Círculo de progresso - barra */
+.progress-bar-circle {
+  width: 100px; /* Tamanho ajustado */
+  height: 100px; /* Tamanho ajustado */
+  border-radius: 50%;
+  background: #ddd; /* Cor padrão cinza */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Legenda abaixo das barras */
+.legend {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Itens da legenda */
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Círculo de cor na legenda */
+.legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
 
 

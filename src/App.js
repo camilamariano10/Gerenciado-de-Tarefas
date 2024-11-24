@@ -2,16 +2,15 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import TaskList from './components/TaskList';
-import ProgressBar from './components/ProgressBar';
+import ProgressBar from './components/ProgressBar';  // Barra de progresso das tarefas concluídas
 import TaskForm from './components/TaskForm';
+import TagProgressBar from './components/TagProgressBar';  // Barra de progresso das etiquetas
 
 function App() {
     const [showTaskForm, setShowTaskForm] = useState(false);
     const [tasks, setTasks] = useState([]);
     const [taskToEdit, setTaskToEdit] = useState(null);
     const [filter, setFilter] = useState({ tag: '', priority: '', status: '' });
-
-    
 
     useEffect(() => {
         const currentDate = new Date();
@@ -71,7 +70,7 @@ function App() {
                 task.id === taskId ? { ...task, completed: !task.completed } : task
             )
         );
-    };    
+    };
 
     const filteredTasks = tasks.filter((task) => {
         const tagMatch = !filter.tag || (Array.isArray(task.tags) && task.tags.includes(filter.tag));
@@ -81,9 +80,12 @@ function App() {
             (filter.status === 'Concluído' && task.completed) ||
             (filter.status === 'Atrasado' && new Date(task.dueDate) < new Date() && !task.completed) ||
             (filter.status === 'Em Dia' && new Date(task.dueDate) >= new Date() && !task.completed);
-    
+
         return tagMatch && priorityMatch && statusMatch;
     });
+
+    // Filtra apenas as tarefas não concluídas para a TagProgressBar
+    const pendingTasks = filteredTasks.filter(task => !task.completed);
 
     return (
         <div className="app">
@@ -102,7 +104,13 @@ function App() {
                     onCompleteTask={handleCompleteTask}
                     activeFilter={filter}
                 />
-                <ProgressBar tasks={tasks} />
+                <div className="progress-bars">
+                    {/* Barra de progresso das tarefas concluídas */}
+                    <ProgressBar tasks={tasks} />
+
+                    {/* Barra de progresso das etiquetas */}
+                    <TagProgressBar tasks={pendingTasks} />
+                </div>
             </div>
 
             {showTaskForm && (

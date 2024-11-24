@@ -125,9 +125,11 @@ function TaskForm({ onClose, onSaveTask, onDeleteTask, taskToEdit }) {
 
             {/* Botões de ação */}
             <div className="task-form-buttons">
-                <button className="delete-button" onClick={handleDelete} disabled={!taskToEdit}>
+                {taskToEdit && (
+                    <button className="delete-button" onClick={handleDelete} >
                     EXCLUIR
                 </button>
+                )}
                 <button className="save-button" onClick={handleSave}>
                     SALVAR
                 </button>
